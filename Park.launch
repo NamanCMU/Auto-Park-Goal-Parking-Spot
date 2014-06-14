@@ -1,0 +1,29 @@
+<launch>
+
+<node pkg="goal_parkingspot" type="path_changer2.py" name="Change_Path_car1" output="screen"/> 
+
+
+<group ns="car1">
+
+<env name="ROSCONSOLE_CONFIG_FILE" value="$(find goal_parkingspot)/logger.config"/>
+
+<node pkg="hokuyo_node" type="hokuyo_node" name="hokuyo_node" output="screen">
+	<param name="frame_id" value="/car1/laser"/>
+</node> 
+
+<node pkg="map_server" type="map_server" name="map_run" args="$(find goal_parkingspot)/map.pgm 0.05"/> 
+
+<node pkg="odometry_publisher_tutorial" type="odometry_publisher" name="publish_odometry" output="screen"/> 
+
+<include file="$(find goal_parkingspot)/Hector_mapping2.launch"/>
+
+
+
+<include file="$(find sbpl_lattice_planner)/launch/move_base_sbpl_fake_localization_2.5cm.launch"/>
+
+<node pkg="rosserial_python" type="serial_node.py" name="serial" args="/dev/ttyACM1" output="screen"/>	
+
+
+</group>
+
+</launch>

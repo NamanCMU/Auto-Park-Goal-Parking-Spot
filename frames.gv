@@ -1,0 +1,10 @@
+digraph G {
+"/car1/base_footprint" -> "/car1/laser"[label="Broadcaster: /car1/bl_laser2\nAverage rate: 5.201 Hz\nMost recent transform: -0.072 sec old \nBuffer length: 4.807 sec\n"];
+"/car1/base_link" -> "/car1/base_footprint"[label="Broadcaster: /car1/bl_laser\nAverage rate: 5.203 Hz\nMost recent transform: -0.140 sec old \nBuffer length: 4.805 sec\n"];
+"/car1/odom" -> "/car1/base_link"[label="Broadcaster: /car1/publish_odometry\nAverage rate: 5.208 Hz\nMost recent transform: 0.066 sec old \nBuffer length: 4.800 sec\n"];
+"/map" -> "/car1/odom"[label="Broadcaster: /car1/amcl\nAverage rate: 10.269 Hz\nMost recent transform: -0.027 sec old \nBuffer length: 4.967 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1397791396.284"[ shape=plaintext ] ;
+ }->"/map";
+}

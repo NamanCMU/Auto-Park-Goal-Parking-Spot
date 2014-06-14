@@ -1,0 +1,18 @@
+<launch>
+
+<node pkg="hokuyo_node" type="hokuyo_node" name="hokuyo_node" output="screen"/> 
+<node pkg="map_server" type="map_server" name="map_run" args="$(find goal_parkingspot)/map.yaml" output="screen"/> 
+
+<node pkg="odometry_publisher_tutorial" type="odometry_publisher" name="publish_odometry" output="screen"/> 
+
+<include file="$(find goal_parkingspot)/Hector_mapping.launch"/>
+
+<include file="$(find goal_parkingspot)/amcl.launch"/>
+
+<include file="$(find sbpl_lattice_planner)/launch/move_base_sbpl_fake_localization_2.5cm.launch"/>
+
+<node pkg="rosserial_python" type="serial_node.py" name="serial" args="/dev/ttyACM1" output="screen"/> 
+
+<node pkg="goal_parkingspot" type="goal_parkingspot.py" name="goal" args="$(find goal_parkingspot)/src/goalCoordinate.txt" output="screen"/>
+
+</launch>

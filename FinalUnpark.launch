@@ -1,0 +1,9 @@
+<launch>
+
+<group ns="car1">
+
+<node pkg="goal_parkingspot" type="goal_parkingspot_unpark.py" name="goalu" args="$(find goal_parkingspot)/src/goalCoordinateUnpark.txt" />
+
+</group>
+
+</launch>

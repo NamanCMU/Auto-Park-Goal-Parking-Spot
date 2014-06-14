@@ -1,0 +1,12 @@
+<launch>
+
+
+<group ns="car1">
+
+<!--<node pkg="goal_parkingspot" type="goal_parkingspot_park.py" name="goalp" args="$(find goal_parkingspot)/src/goalCoordinatePark.txt" />-->
+
+<include file="$(find goal_parkingspot)/amcl.launch"/>
+
+</group>
+
+</launch>

@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="bl_laser" args="0.0 0 0 0.0 0.0 0.0 /map /base_link 100" />
+    <node pkg="tf" type="static_transform_publisher" name="bl_laser2" args="0.0 0 0 0.0 0.0 0.0 /base_link /laser 100" />
+	 
+</launch>
